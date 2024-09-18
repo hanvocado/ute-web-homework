@@ -34,11 +34,11 @@
   <!-- Theme styles END -->
 </head>
 <!-- Head END -->
-<body>
+<body class="ecommerce">
 	
     <%@include file="/common/header.jsp"%>
-
-	
+    
+	<sitemesh:write property="page.main-body" />
 	
 	<div>
 		<%@include file="/common/footer.jsp"%>

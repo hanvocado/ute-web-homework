@@ -4,8 +4,8 @@
 <title>Trang chủ</title>
 
 <!-- Body BEGIN -->
-<body class="ecommerce">
-	<%@include file="../common/slider.jsp"%>
+<content tag="main-body">
+	<%@include file="/common/slider.jsp"%>
 	
 	<div class="main">
       <div class="container">
@@ -387,4 +387,6 @@
         <!-- END TWO PRODUCTS & PROMO -->
       </div>
     </div>
-</body>
+    
+    <%@include file="/common/product-popup.jsp"%> 
+</content>

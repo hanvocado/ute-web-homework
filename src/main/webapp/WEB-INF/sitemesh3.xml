@@ -1,7 +1,11 @@
 <sitemesh>
+	<content-processor>
+		<tag-rule-bundle class="org.sitemesh.content.tagrules.html.Sm2TagRuleBundle" />
+	</content-processor>
 	<mapping path="/*" name="web" decorator="web.jsp" />
 	<mapping path="/admin/*" name="admin" decorator="admin.jsp" />
 	<mapping path="/manager/*" name="admin" decorator="admin.jsp" />
 	<!-- Exclude path from decoration. -->
 	<mapping path="/api*" exclude="true" />
+
 </sitemesh>
