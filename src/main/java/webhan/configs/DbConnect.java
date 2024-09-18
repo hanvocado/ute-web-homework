@@ -33,12 +33,12 @@ public class DbConnect {
 		 * User user = userDao.findByEmail("test1@ute.com"); System.out.println(user);
 		 */
 
-		/*
-		 * List<User> users = userDao.findAll(); for (User user : users) {
-		 * System.out.println(user); }
-		 */
+		
+		  List<User> users = userDao.findAll(); for (User user : users) {
+		  System.out.println(user); }
+		 
 
-		userDao.insert(new User("746fbfj8bvjdu8", "han2@test.com", "Nguyễn Hân", "12345", 1));
+		//userDao.insert(new User("746fbfj8bvjdu8", "han2@test.com", "Nguyễn Hân", "12345", 1));
 	}
 
 }

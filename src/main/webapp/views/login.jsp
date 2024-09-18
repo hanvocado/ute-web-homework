@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<%@include file="../components/head.jsp"%>
+    pageEncoding="UTF-8"%>
+    
 <title>Đăng nhập</title>
-</head>
 <body>
 	<section class="vh-100" style="background-color: #eee;">
 		<div class="container h-100">
@@ -81,7 +77,4 @@
 			</div>
 		</div>
 	</section>
-
-	<%@include file="../components/footer.jsp"%>
 </body>
-</html>

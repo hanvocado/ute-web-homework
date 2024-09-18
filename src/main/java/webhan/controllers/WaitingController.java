@@ -43,7 +43,7 @@ public class WaitingController extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/home");
 			}
 		} else {
-			response.sendRedirect(request.getContextPath() + "/login");
+			response.sendRedirect(request.getContextPath() + "/views/home.jsp");
 		}
 	}
 
