@@ -18,7 +18,7 @@
               <div class="row">
                 <div class="col-md-7 col-sm-7">
                   <form class="form-horizontal form-without-legend" role="form"
-                  	action="/webhan/register" method="post">
+                  	action="/webhan/register" method="post" enctype="multipart/form-data">
                   	<div class="form-group">
                       <label for="name" class="col-lg-4 control-label">Họ tên <span class="require">*</span></label>
                       <div class="col-lg-8">
@@ -43,6 +43,12 @@
                         <input type="password" class="form-control" id="cp" name="password-cf" required>
                       </div>
                     </div>
+                    <div class="form-group">
+						<label class="col-lg-4 control-label">Ảnh đại diện</label> 
+						<div class="col-lg-8">
+							<input class="form-control" name="img" type="file">
+						</div>
+					</div>
                     <div class="row">
                       <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
                         <button type="submit" class="btn btn-primary">Đăng ký</button>

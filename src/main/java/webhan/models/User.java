@@ -9,6 +9,7 @@ public class User implements Serializable {
 	private String fullname;
 	private String password;
 	private int roleId;
+	private String img;
 	
 	public User(String id, String email, String fullname, String password, int roleId) {
 		super();
@@ -17,6 +18,24 @@ public class User implements Serializable {
 		this.fullname = fullname;
 		this.password = password;
 		this.roleId = roleId;
+	}
+
+	public User(String id, String email, String fullname, String password, int roleId, String img) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.fullname = fullname;
+		this.password = password;
+		this.roleId = roleId;
+		this.img = img;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	public User(String email, String fullname, String password) {

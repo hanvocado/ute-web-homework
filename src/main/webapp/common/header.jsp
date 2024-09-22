@@ -42,7 +42,7 @@ HttpSession ss = request.getSession();
                         
                         	if (userId != null) {
                         %>
-                        		<li><a href="shop-account.html">My Account</a></li>
+                        		<li><a href="/webhan/account">Tài khoản</a></li>
                         		<li><a href="shop-wishlist.html">My Wishlist</a></li>
                         		<li><a href="/webhan/logout">Đăng xuất</a></li>
                         	<%

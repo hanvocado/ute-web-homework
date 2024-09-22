@@ -48,7 +48,7 @@ public class UserDao implements IUserDao {
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				return new User(rs.getString("id"), rs.getString("email"), rs.getString("fullname"),
-						rs.getString("password"), rs.getInt("roleId"));
+						rs.getString("password"), rs.getInt("roleId"), rs.getString("img"));
 			}
 			conn.close(); 
 		} catch (Exception e) {
@@ -59,7 +59,7 @@ public class UserDao implements IUserDao {
 
 	@Override
 	public void insert(User user) {
-		String query = "INSERT INTO users(email, fullname, password, roleId, id) VALUES (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO users(email, fullname, password, roleId, id, img) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
 			conn = new DbConnect().getDatabaseConnection();
@@ -69,6 +69,7 @@ public class UserDao implements IUserDao {
 			ps.setString(3, user.getPassword());
 			ps.setInt(4, user.getRoleId());
 			ps.setString(5, user.getId());
+			ps.setString(6, user.getImg());
 			ps.executeUpdate();
 			conn.close(); 
 		} catch (Exception e) {
@@ -87,7 +88,7 @@ public class UserDao implements IUserDao {
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				return new User(rs.getString("id"), rs.getString("email"), rs.getString("fullname"),
-						rs.getString("password"), rs.getInt("roleId"));
+						rs.getString("password"), rs.getInt("roleId"), rs.getString("img"));
 			}
 			conn.close(); 
 		} catch (Exception e) {

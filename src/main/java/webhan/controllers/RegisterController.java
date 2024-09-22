@@ -1,6 +1,8 @@
 package webhan.controllers;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,6 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
 import webhan.models.User;
 import webhan.services.impl.UserService;
 import webhan.utils.Constant;
@@ -50,8 +53,16 @@ public class RegisterController extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String passwordCf = request.getParameter("password-cf");
+		Part file = request.getPart("img");
+		String realPath = request.getServletContext().getRealPath("/uploads");
+		String imgName = Paths.get(file.getSubmittedFileName()).getFileName().toString();
 		IUserService userService = new UserService();
 
+		if (!Files.exists(Paths.get(realPath))) {
+			Files.createDirectory(Paths.get(realPath));
+		}
+		file.write(realPath + "/profile/" + imgName);
+		
 		String alertMsg = "";
 		if (userService.isEmailExisted(email)) {
 			alertMsg = "Email đã tồn tại!";
