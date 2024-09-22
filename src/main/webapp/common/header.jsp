@@ -1,5 +1,10 @@
+<%@page import="webhan.utils.Constant"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+HttpSession ss = request.getSession();
+                		String userId = (String) ss.getAttribute(Constant.SESSION_USERNAME);
+                		%>
 <!-- BEGIN TOP BAR -->
     <div class="pre-header">
         <div class="container">
@@ -30,11 +35,24 @@
                 <!-- END TOP BAR LEFT PART -->
                 <!-- BEGIN TOP BAR MENU -->
                 <div class="col-md-6 col-sm-6 additional-nav">
-                    <ul class="list-unstyled list-inline pull-right">
-                        <li><a href="shop-account.html">My Account</a></li>
-                        <li><a href="shop-wishlist.html">My Wishlist</a></li>
-                        <li><a href="shop-checkout.html">Checkout</a></li>
-                        <li><a href="page-login.html">Log In</a></li>
+                    <ul class="list-unstyled list-inline pull-right">                     
+                        
+              
+                        <%	
+                        
+                        	if (userId != null) {
+                        %>
+                        		<li><a href="shop-account.html">My Account</a></li>
+                        		<li><a href="shop-wishlist.html">My Wishlist</a></li>
+                        		<li><a href="/webhan/logout">Đăng xuất</a></li>
+                        	<%
+                        	} else {
+                        	%>
+                        		<li><a href="/webhan/register">Đăng ký</a></li>
+                        		<li><a href="/webhan/login">Đăng nhập</a></li>
+                        	<%
+                        	}                        	
+                        	%>
                     </ul>
                 </div>
                 <!-- END TOP BAR MENU -->

@@ -40,7 +40,7 @@ public class WaitingController extends HttpServlet {
 			} else if (u.getRoleId() == 2) {
 				response.sendRedirect(request.getContextPath() + "/manager/home");
 			} else {
-				response.sendRedirect(request.getContextPath() + "/home");
+				response.sendRedirect(request.getContextPath() + "/views/home.jsp");
 			}
 		} else {
 			response.sendRedirect(request.getContextPath() + "/views/home.jsp");

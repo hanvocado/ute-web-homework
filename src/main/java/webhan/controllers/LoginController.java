@@ -40,7 +40,8 @@ public class LoginController extends HttpServlet {
 				}
 			}
 		}
-		request.getRequestDispatcher("/views/login.jsp").forward(request, response);
+		response.sendRedirect(request.getContextPath() + "/views/login.jsp");
+		//request.getRequestDispatcher("/views/login.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -65,7 +66,7 @@ public class LoginController extends HttpServlet {
 				saveRemeberMe(response, user.getId());
 			}
 
-			response.sendRedirect(request.getContextPath() + "/waiting");
+			request.getRequestDispatcher("/waiting").forward(request, response);
 		} else {
 			alertMsg = "Tài khoản hoặc mật khẩu không đúng";
 			request.setAttribute("alert", alertMsg);
@@ -75,7 +76,7 @@ public class LoginController extends HttpServlet {
 
 	private void saveRemeberMe(HttpServletResponse response, String userId) {
 		Cookie cookie = new Cookie(Constant.COOKIE_REMEMBER, userId);
-		cookie.setMaxAge(30 * 60);
+		cookie.setMaxAge(30);
 		response.addCookie(cookie);
 	}
 

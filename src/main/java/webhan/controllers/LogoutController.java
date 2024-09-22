@@ -24,6 +24,6 @@ public class LogoutController extends HttpServlet {
 				cookie.setMaxAge(0);
 			}
 		}
-		request.getRequestDispatcher("/views/login.jsp").forward(request, response);
+		response.sendRedirect(request.getContextPath() + "/views/home.jsp");
 	}
 }
