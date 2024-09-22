@@ -1,6 +1,7 @@
 package webhan.controllers.customer;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,9 +30,9 @@ public class AccountController extends HttpServlet {
 			UserService service = new UserService();
 			User user = service.findById(userId);
 			request.setAttribute("user", user);
-			response.sendRedirect(request.getContextPath() + "/views/account.jsp");
-		}
-		response.sendRedirect(request.getContextPath() + "/views/login.jsp");
+			request.getRequestDispatcher("/views/account.jsp").forward(request, response);
+		} else
+			response.sendRedirect(request.getContextPath() + "/views/login.jsp");
 	}
 
 	/**

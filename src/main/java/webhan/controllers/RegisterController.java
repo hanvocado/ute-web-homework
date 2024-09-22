@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
@@ -20,6 +21,7 @@ import webhan.services.*;
 
 @SuppressWarnings("serial")
 @WebServlet("/register")
+@MultipartConfig
 public class RegisterController extends HttpServlet {
 	public RegisterController() {
 	}
@@ -61,7 +63,7 @@ public class RegisterController extends HttpServlet {
 		if (!Files.exists(Paths.get(realPath))) {
 			Files.createDirectory(Paths.get(realPath));
 		}
-		file.write(realPath + "/profile/" + imgName);
+		file.write(realPath + "/" + imgName);
 		
 		String alertMsg = "";
 		if (userService.isEmailExisted(email)) {
@@ -77,7 +79,7 @@ public class RegisterController extends HttpServlet {
 			request.getRequestDispatcher("/views/register.jsp").forward(request, response);
 			return;
 		}
-		boolean isSuccess = userService.register(email, password, fullName);
+		boolean isSuccess = userService.register(email, password, fullName, imgName);
 		if (isSuccess) {
 			request.setAttribute("alert", "Tạo tài khoản thành công! Vui lòng đăng nhập để tiếp tục.");
 			RequestDispatcher rd = request.getRequestDispatcher("views/login.jsp");

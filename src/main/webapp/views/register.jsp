@@ -46,7 +46,7 @@
                     <div class="form-group">
 						<label class="col-lg-4 control-label">Ảnh đại diện</label> 
 						<div class="col-lg-8">
-							<input class="form-control" name="img" type="file">
+							<input class="form-control" name="img" type="file" required>
 						</div>
 					</div>
                     <div class="row">

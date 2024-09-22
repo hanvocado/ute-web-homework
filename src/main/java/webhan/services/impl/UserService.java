@@ -31,12 +31,12 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public boolean register(String email, String password, String fullname) {
+	public boolean register(String email, String password, String fullname, String img) {
 		if (userDao.findByEmail(email) != null) {
 			return false;
 		}
 		String id = UUID.randomUUID().toString();
-		userDao.insert(new User(id, email, fullname, password, Constant.CUSTOMER_ID));
+		userDao.insert(new User(id, email, fullname, password, Constant.CUSTOMER_ID, img));
 		return true;
 	}
 

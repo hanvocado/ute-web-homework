@@ -9,7 +9,7 @@ public interface IUserService {
 	
 	User findByEmail(String Email);
 
-	boolean register(String email, String password, String fullname);
+	boolean register(String email, String password, String fullname, String img);
 	
 	boolean isEmailExisted(String email);
 	
