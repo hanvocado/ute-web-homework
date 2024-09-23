@@ -1,6 +1,8 @@
 package webhan.models;
 
 import java.io.Serializable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -10,6 +12,7 @@ public class User implements Serializable {
 	private String password;
 	private int roleId;
 	private String img;
+	private String phone;
 	
 	public User(String id, String email, String fullname, String password, int roleId) {
 		super();
@@ -20,7 +23,7 @@ public class User implements Serializable {
 		this.roleId = roleId;
 	}
 
-	public User(String id, String email, String fullname, String password, int roleId, String img) {
+	public User(String id, String email, String fullname, String password, int roleId, String img, String phone) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -28,10 +31,23 @@ public class User implements Serializable {
 		this.password = password;
 		this.roleId = roleId;
 		this.img = img;
+		this.phone = phone;
 	}
 
 	public String getImg() {
 		return img;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		String phoneNumberPattern = "^0\\d{9}$";
+        Pattern pattern = Pattern.compile(phoneNumberPattern);
+        Matcher matcher = pattern.matcher(phone);
+        if (matcher.matches())
+        	this.phone = phone;
 	}
 
 	public void setImg(String img) {
