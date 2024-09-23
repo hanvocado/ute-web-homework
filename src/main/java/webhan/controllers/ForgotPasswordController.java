@@ -24,6 +24,7 @@ public class ForgotPasswordController extends HttpServlet {
 			throws ServletException, IOException {
 		String fullName = request.getParameter("full-name");
 		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
 		String passwordCf = request.getParameter("password-cf");
 		IUserService userService = new UserService();
@@ -36,7 +37,8 @@ public class ForgotPasswordController extends HttpServlet {
 			return;
 		}
 		
-		if (!user.getFullname().toLowerCase().equals(fullName.toLowerCase())) {
+		if (!user.getFullname().toLowerCase().equals(fullName.toLowerCase()) ||
+				!user.getPhone().equals(phone)) {
 			alertMsg = "Thông tin không trùng khớp!";
 			request.setAttribute("alert", alertMsg);
 			request.getRequestDispatcher("/views/forgot-password.jsp").forward(request, response);
@@ -49,6 +51,7 @@ public class ForgotPasswordController extends HttpServlet {
 			request.getRequestDispatcher("/views/forgot-password.jsp").forward(request, response);
 			return;
 		}
+		
 		boolean isSuccess = userService.updatePassword(user.getId(), password);
 		if (isSuccess) {
 			request.setAttribute("alert", "Đặt lại mật khẩu thành công! Vui lòng đăng nhập để tiếp tục.");
