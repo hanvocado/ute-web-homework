@@ -53,6 +53,7 @@ public class RegisterController extends HttpServlet {
 			throws ServletException, IOException {
 		String fullName = request.getParameter("full-name");
 		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
 		String passwordCf = request.getParameter("password-cf");
 		Part file = request.getPart("img");
@@ -77,17 +78,17 @@ public class RegisterController extends HttpServlet {
 		String imgName = "";
 		if (file != null) {
 			imgName = Paths.get(file.getSubmittedFileName()).getFileName().toString();
+			if (imgName.equals(""))
+				imgName = Constant.IMG_PROFILE_DEFAULT;
 			
-			if (!imgName.equals("")) {
-				String realPath = request.getServletContext().getRealPath("/uploads");
-				if (!Files.exists(Paths.get(realPath))) {
-					Files.createDirectory(Paths.get(realPath));
-				}
-				file.write(realPath + "/" + imgName);
+			String realPath = request.getServletContext().getRealPath("/uploads");
+			if (!Files.exists(Paths.get(realPath))) {
+				Files.createDirectory(Paths.get(realPath));
 			}
+			file.write(realPath + "/" + imgName);
 		}
 		
-		boolean isSuccess = userService.register(email, password, fullName, imgName);
+		boolean isSuccess = userService.register(email, password, fullName, imgName, phone);
 		if (isSuccess) {
 			request.setAttribute("alert", "Tạo tài khoản thành công! Vui lòng đăng nhập để tiếp tục.");
 			RequestDispatcher rd = request.getRequestDispatcher("views/login.jsp");

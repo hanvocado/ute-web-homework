@@ -9,11 +9,11 @@ public interface IUserService {
 	
 	User findByEmail(String Email);
 
-	boolean register(String email, String password, String fullname, String img);
+	boolean register(String email, String password, String fullname, String img, String phone);
 	
 	boolean isEmailExisted(String email);
 	
 	boolean updatePassword(String id, String newPS);
 	
-	User updateUser(String id, String fullname, String email, String oldPassword, String password, String img);
+	User updateUser(User user);
 }

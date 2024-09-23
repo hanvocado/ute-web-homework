@@ -51,7 +51,9 @@ public class User implements Serializable {
 	}
 
 	public void setImg(String img) {
-		if (img != null)
+		if (img == null || img.trim().equals(""))
+			this.img = "profile-default.png";
+		else
 			this.img = img;
 	}
 

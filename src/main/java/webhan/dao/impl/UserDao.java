@@ -28,7 +28,7 @@ public class UserDao implements IUserDao {
 
 			while (rs.next()) {
 				users.add(new User(rs.getString("id"), rs.getString("email"), rs.getString("fullname"),
-						rs.getString("password"), rs.getInt("roleId")));
+						rs.getString("password"), rs.getInt("roleId"), rs.getString("img"), rs.getString("phone")));
 			}
 			conn.close(); 
 			return users;
@@ -48,7 +48,7 @@ public class UserDao implements IUserDao {
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				return new User(rs.getString("id"), rs.getString("email"), rs.getString("fullname"),
-						rs.getString("password"), rs.getInt("roleId"), rs.getString("img"));
+						rs.getString("password"), rs.getInt("roleId"), rs.getString("img"), rs.getString("phone"));
 			}
 			conn.close(); 
 		} catch (Exception e) {
@@ -59,7 +59,7 @@ public class UserDao implements IUserDao {
 
 	@Override
 	public void insert(User user) {
-		String query = "INSERT INTO users(email, fullname, password, roleId, id, img) VALUES (?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO users(email, fullname, password, roleId, id, img, phone) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			conn = new DbConnect().getDatabaseConnection();
@@ -70,6 +70,7 @@ public class UserDao implements IUserDao {
 			ps.setInt(4, user.getRoleId());
 			ps.setString(5, user.getId());
 			ps.setString(6, user.getImg());
+			ps.setString(7, user.getPhone());
 			ps.executeUpdate();
 			conn.close(); 
 		} catch (Exception e) {
@@ -88,7 +89,7 @@ public class UserDao implements IUserDao {
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				return new User(rs.getString("id"), rs.getString("email"), rs.getString("fullname"),
-						rs.getString("password"), rs.getInt("roleId"), rs.getString("img"));
+						rs.getString("password"), rs.getInt("roleId"), rs.getString("img"), rs.getString("phone"));
 			}
 			conn.close(); 
 		} catch (Exception e) {
@@ -116,7 +117,7 @@ public class UserDao implements IUserDao {
 
 	@Override
 	public User updateUser(User user) {
-		String query = "UPDATE users SET fullname=?, email=?, password=?, img=? WHERE id=?";
+		String query = "UPDATE users SET fullname=?, email=?, password=?, img=?, phone=? WHERE id=?";
 		try {
 			conn = new DbConnect().getDatabaseConnection();
 			ps = conn.prepareStatement(query);
@@ -124,7 +125,8 @@ public class UserDao implements IUserDao {
 			ps.setString(2, user.getEmail());
 			ps.setString(3, user.getPassword());
 			ps.setString(4, user.getImg());
-			ps.setString(5, user.getId());
+			ps.setString(5, user.getPhone());
+			ps.setString(6, user.getId());
 			ps.executeUpdate();
 			conn.close(); 
 			return user;

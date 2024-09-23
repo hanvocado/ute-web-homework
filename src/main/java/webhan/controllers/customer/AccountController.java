@@ -46,6 +46,7 @@ public class AccountController extends HttpServlet {
 		String userId = (String) session.getAttribute(Constant.SESSION_USERNAME);
 		String fullName = request.getParameter("full-name");
 		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
 		String oldPassword = request.getParameter("old-password");
 		String newPassword = request.getParameter("new-password");
 		String passwordCf = request.getParameter("password-cf");
@@ -70,21 +71,27 @@ public class AccountController extends HttpServlet {
 			request.getRequestDispatcher("/views/account.jsp").forward(request, response);
 			return;
 		}
-		
+	
 		String imgName = "";
 		if (file != null) {
 			imgName = Paths.get(file.getSubmittedFileName()).getFileName().toString();
-			
+					
 			if (!imgName.equals("")) {
 				String realPath = request.getServletContext().getRealPath("/uploads");
 				if (!Files.exists(Paths.get(realPath))) {
 					Files.createDirectory(Paths.get(realPath));
 				}
 				file.write(realPath + "/" + imgName);
+				user.setImg(imgName);
 			}
 		}
-				
-		user = userService.updateUser(userId, fullName, email, oldPassword, passwordCf, imgName);
+		
+		user.setFullname(fullName);
+		user.setEmail(email);
+		user.setPassword(newPassword);
+		user.setPhone(phone);
+		
+		user = userService.updateUser(user);
 		if (user == null) {
 			alertMsg = "Không thành công, vui lòng thử lại!";
 		} else {

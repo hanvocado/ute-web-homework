@@ -31,12 +31,12 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public boolean register(String email, String password, String fullname, String img) {
+	public boolean register(String email, String password, String fullname, String img, String phone) {
 		if (userDao.findByEmail(email) != null) {
 			return false;
 		}
 		String id = UUID.randomUUID().toString();
-		userDao.insert(new User(id, email, fullname, password, Constant.CUSTOMER_ID, img));
+		userDao.insert(new User(id, email, fullname, password, Constant.CUSTOMER_ID, img, phone));
 		return true;
 	}
 
@@ -54,15 +54,7 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public User updateUser(String id, String fullname, String email, String oldPassword, String password, String img) {
-		User user = userDao.findById(id);
-		if (user == null || !user.getPassword().equals(oldPassword)) {
-			return null;
-		}
-		user.setEmail(email);
-		user.setFullname(fullname);
-		user.setPassword(password);
-		user.setImg(img);
+	public User updateUser(User user) {
 		return userDao.updateUser(user);
 	}
 }

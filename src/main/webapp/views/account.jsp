@@ -45,6 +45,12 @@
 		                        <input type="email" class="form-control" id="email" name="email" value="${user.email}" required >
 		                      </div>
 		                    </div>
+		                    <div class="form-group">
+		                      <label for="phone" class="col-lg-4 control-label">Số điện thoại <span class="require">*</span></label>
+		                      <div class="col-lg-8">
+		                        <input type="text" class="form-control" id="phone" name="phone" value="${user.phone}" required >
+		                      </div>
+		                    </div>
 		                    
 		                    <div class="form-group">
 								<label class="col-lg-4 control-label">Ảnh đại diện</label> 

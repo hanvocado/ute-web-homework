@@ -32,6 +32,12 @@
                       </div>
                     </div>
                     <div class="form-group">
+                      <label for="phone" class="col-lg-4 control-label">Số điện thoại <span class="require">*</span></label>
+                      <div class="col-lg-8">
+                        <input type="text" class="form-control" id="phone" name="phone" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
                       <label for="password" class="col-lg-4 control-label">Mật khẩu <span class="require">*</span></label>
                       <div class="col-lg-8">
                         <input type="password" class="form-control" id="password" name="password" required>
