@@ -14,4 +14,6 @@ public interface IUserService {
 	boolean isEmailExisted(String email);
 	
 	boolean updatePassword(String id, String newPS);
+	
+	User updateUser(String id, String fullname, String email, String oldPassword, String password, String img);
 }

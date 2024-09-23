@@ -35,7 +35,8 @@ public class User implements Serializable {
 	}
 
 	public void setImg(String img) {
-		this.img = img;
+		if (img != null)
+			this.img = img;
 	}
 
 	public User(String email, String fullname, String password) {
@@ -58,7 +59,9 @@ public class User implements Serializable {
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		if (email != null && !email.trim().equals("")) {			
+			this.email = email;
+		}
 	}
 
 	public String getFullname() {
@@ -66,7 +69,10 @@ public class User implements Serializable {
 	}
 
 	public void setFullname(String fullname) {
-		this.fullname = fullname;
+		if (fullname != null && !fullname.trim().equals("")) {			
+			this.fullname = fullname;
+		}
+		
 	}
 
 	public String getPassword() {
@@ -74,7 +80,9 @@ public class User implements Serializable {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		if (password != null && !password.trim().equals("")) {			
+			this.password = password;
+		}
 	}
 
 	public int getRoleId() {

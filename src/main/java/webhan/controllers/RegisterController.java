@@ -56,14 +56,8 @@ public class RegisterController extends HttpServlet {
 		String password = request.getParameter("password");
 		String passwordCf = request.getParameter("password-cf");
 		Part file = request.getPart("img");
-		String realPath = request.getServletContext().getRealPath("/uploads");
-		String imgName = Paths.get(file.getSubmittedFileName()).getFileName().toString();
+		
 		IUserService userService = new UserService();
-
-		if (!Files.exists(Paths.get(realPath))) {
-			Files.createDirectory(Paths.get(realPath));
-		}
-		file.write(realPath + "/" + imgName);
 		
 		String alertMsg = "";
 		if (userService.isEmailExisted(email)) {
@@ -79,6 +73,20 @@ public class RegisterController extends HttpServlet {
 			request.getRequestDispatcher("/views/register.jsp").forward(request, response);
 			return;
 		}
+		
+		String imgName = "";
+		if (file != null) {
+			imgName = Paths.get(file.getSubmittedFileName()).getFileName().toString();
+			
+			if (!imgName.equals("")) {
+				String realPath = request.getServletContext().getRealPath("/uploads");
+				if (!Files.exists(Paths.get(realPath))) {
+					Files.createDirectory(Paths.get(realPath));
+				}
+				file.write(realPath + "/" + imgName);
+			}
+		}
+		
 		boolean isSuccess = userService.register(email, password, fullName, imgName);
 		if (isSuccess) {
 			request.setAttribute("alert", "Tạo tài khoản thành công! Vui lòng đăng nhập để tiếp tục.");

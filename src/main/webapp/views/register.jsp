@@ -28,7 +28,7 @@
                   	<div class="form-group">
                       <label for="email" class="col-lg-4 control-label">Email <span class="require">*</span></label>
                       <div class="col-lg-8">
-                        <input type="text" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" id="email" name="email" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -46,7 +46,7 @@
                     <div class="form-group">
 						<label class="col-lg-4 control-label">Ảnh đại diện</label> 
 						<div class="col-lg-8">
-							<input class="form-control" name="img" type="file" required>
+							<input class="form-control" name="img" type="file">
 						</div>
 					</div>
                     <div class="row">

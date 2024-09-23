@@ -52,4 +52,17 @@ public class UserService implements IUserService {
 	public boolean updatePassword(String id, String newPS) {
 		return userDao.updatePassword(id, newPS);
 	}
+
+	@Override
+	public User updateUser(String id, String fullname, String email, String oldPassword, String password, String img) {
+		User user = userDao.findById(id);
+		if (user == null || !user.getPassword().equals(oldPassword)) {
+			return null;
+		}
+		user.setEmail(email);
+		user.setFullname(fullname);
+		user.setPassword(password);
+		user.setImg(img);
+		return userDao.updateUser(user);
+	}
 }

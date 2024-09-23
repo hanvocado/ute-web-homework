@@ -114,4 +114,24 @@ public class UserDao implements IUserDao {
 		}		
 	}
 
+	@Override
+	public User updateUser(User user) {
+		String query = "UPDATE users SET fullname=?, email=?, password=?, img=? WHERE id=?";
+		try {
+			conn = new DbConnect().getDatabaseConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, user.getFullname());
+			ps.setString(2, user.getEmail());
+			ps.setString(3, user.getPassword());
+			ps.setString(4, user.getImg());
+			ps.setString(5, user.getId());
+			ps.executeUpdate();
+			conn.close(); 
+			return user;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 }

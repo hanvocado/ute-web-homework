@@ -15,7 +15,7 @@
 											style="width: 40px; height: 40px; border-radius: 50%!important;">
 	          			
 	          			</div>
-          				<div class="col-sm-11 col-md-10 padding-top-10"><h1>Tài khoản của tôi</h1></div>
+          				<div class="col-sm-12 col-md-10 padding-top-10"><h1>Tài khoản của tôi</h1></div>
           			
           			</div>
           		</div>
@@ -28,21 +28,21 @@
             <div class="content-form-page">
               <div class="row">
                   <form class="form-horizontal form-without-legend" role="form"
-                  	action="/webhan/register" method="post" enctype="multipart/form-data">
+                  	action="/webhan/account" method="post" enctype="multipart/form-data">
 
                   	<div class="row">
                   		<div class="col-sm-6 col-md-6">
 		                  	
 		                  	<div class="form-group">
-		                      <label for="name" class="col-lg-4 control-label">Họ tên <span class="require">*</span></label>
+		                      <label for="fullname" class="col-lg-4 control-label">Họ tên <span class="require">*</span></label>
 		                      <div class="col-lg-8">
-		                        <input type="text" class="form-control" id="name" name="full-name" value="${user.fullname}" required>
+		                        <input type="text" class="form-control" id="fullname" name="full-name" value="${user.fullname}" required>
 		                      </div>
 		                    </div>
 		                  	<div class="form-group">
 		                      <label for="email" class="col-lg-4 control-label">Email <span class="require">*</span></label>
 		                      <div class="col-lg-8">
-		                        <input type="text" class="form-control" id="email" name="email" required value="${user.email}">
+		                        <input type="email" class="form-control" id="email" name="email" value="${user.email}" required >
 		                      </div>
 		                    </div>
 		                    
@@ -55,15 +55,15 @@
                   		</div>
                   		<div class="col-sm-6 col-md-6">
 							<div class="form-group">
-		                      <label for="password" class="col-lg-4 control-label">Mật khẩu cũ</label>
+		                      <label for="password" class="col-lg-4 control-label">Mật khẩu hiện tại <span class="require">*</span></label>
 		                      <div class="col-lg-8">
-		                        <input type="password" class="form-control" id="password" name="old-password">
+		                        <input type="password" class="form-control" id="password" name="old-password" required>
 		                      </div>
 		                    </div>
 		                    <div class="form-group">
-		                      <label for="password" class="col-lg-4 control-label">Mật khẩu mới</label>
+		                      <label for="npassword" class="col-lg-4 control-label">Mật khẩu mới</label>
 		                      <div class="col-lg-8">
-		                        <input type="password" class="form-control" id="password" name="new-password">
+		                        <input type="password" class="form-control" id="npassword" name="new-password">
 		                      </div>
 		                    </div>
 		                    <div class="form-group">

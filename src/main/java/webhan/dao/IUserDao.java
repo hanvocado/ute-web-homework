@@ -14,4 +14,6 @@ public interface IUserDao {
 	void insert(User user);
 	
 	boolean updatePassword(String id, String newPS);
+	
+	User updateUser(User user);
 }
