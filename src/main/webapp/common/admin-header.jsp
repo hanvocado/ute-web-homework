@@ -397,9 +397,9 @@
 													eCommerce </a>
 												</li>
 												<li>
-													<a href="ecommerce_orders.html" class="iconify">
+													<a href="/webhan/admin/categories" class="iconify">
 													<i class="icon-basket"></i>
-													Manage Orders </a>
+													Manage Categories </a>
 												</li>
 												<li>
 													<a href="ecommerce_orders_view.html" class="iconify">

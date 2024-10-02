@@ -17,12 +17,13 @@ public class CategoryDao implements ICategoryDao {
 
 	@Override
 	public void insert(Category category) {
-		String sql = "INSERT INTO categories (name, icon) VALUES (?,?)";
+		String sql = "INSERT INTO categories (name, icon, image) VALUES (?,?,?)";
 		try {
 			conn = new DbConnect().getDatabaseConnection();
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, category.getName());
 			ps.setString(2, category.getIcon());
+			ps.setString(3, category.getImage());
 			ps.executeUpdate();
 			conn.close();
 		} catch (Exception e) {
@@ -33,13 +34,14 @@ public class CategoryDao implements ICategoryDao {
 
 	@Override
 	public void edit(Category category) {
-		String sql = "UPDATE categories SET name = ?, icon=? WHERE id = ?";
+		String sql = "UPDATE categories SET name = ?, icon=?, deleted=? WHERE id = ?";
 		try {
 			conn = new DbConnect().getDatabaseConnection();
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, category.getName());
 			ps.setString(2, category.getIcon());
-			ps.setInt(3, category.getId());
+			ps.setBoolean(3, category.isDeleted());
+			ps.setInt(4, category.getId());
 			ps.executeUpdate();
 			conn.close();
 		} catch (Exception e) {
@@ -55,7 +57,7 @@ public class CategoryDao implements ICategoryDao {
 		try {
 			conn = new DbConnect().getDatabaseConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, 1);
+			ps.setBoolean(1, true);
 			ps.setInt(2, id);
 			ps.executeUpdate();
 			conn.close();
@@ -74,7 +76,7 @@ public class CategoryDao implements ICategoryDao {
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				Category category = new Category(rs.getInt("id"), rs.getString("name"), rs.getString("icon"));
+				Category category = new Category(rs.getInt("id"), rs.getString("name"), rs.getString("icon"), rs.getBoolean("deleted"), rs.getString("image"));
 
 				conn.close();
 				return category;
@@ -94,7 +96,7 @@ public class CategoryDao implements ICategoryDao {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				Category category = new Category(rs.getInt("id"), rs.getString("name"), rs.getString("icon"));
+				Category category = new Category(rs.getInt("id"), rs.getString("name"), rs.getString("icon"), rs.getBoolean("deleted"), rs.getString("image"));
 
 				categories.add(category);
 			}

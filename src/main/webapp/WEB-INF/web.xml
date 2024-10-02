@@ -12,24 +12,4 @@
     <filter-name>sitemesh</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AccountController</display-name>
-    <servlet-name>AccountController</servlet-name>
-    <servlet-class>webhan.controllers.customer.AccountController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AccountController</servlet-name>
-    <url-pattern>/AccountController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AccountControllers</display-name>
-    <servlet-name>AccountControllers</servlet-name>
-    <servlet-class>webhan.controllers.AccountController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AccountControllers</servlet-name>
-    <url-pattern>/AccountControllers</url-pattern>
-  </servlet-mapping>
 </web-app>

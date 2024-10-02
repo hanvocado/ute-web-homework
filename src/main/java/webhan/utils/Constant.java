@@ -7,4 +7,5 @@ public class Constant {
 	public static final int MANAGER_ID = 2;
 	public static final int CUSTOMER_ID = 3;
 	public static final String IMG_PROFILE_DEFAULT = "profile-default.png";
+	public static final String DIR = "D:\\upload";
 }
